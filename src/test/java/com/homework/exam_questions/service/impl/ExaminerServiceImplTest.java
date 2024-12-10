@@ -28,7 +28,6 @@ class ExaminerServiceImplTest {
 
     @Test
     void shouldCorrectlyGetRandomQuestions() {
-        //given
         int amount = 3;
 
         List<Question> questions = new ArrayList<>();
@@ -44,10 +43,8 @@ class ExaminerServiceImplTest {
                 questions.get(1), questions.get(2)
         );
 
-        //when
         Collection<Question> randomQuestions = examinerService.getQuestions(amount);
 
-        //then
         assertEquals(randomQuestions.size(), amount);
         assertTrue(randomQuestions.containsAll(questions));
         Mockito.verify(questionService, times(6)).getRandomQuestion();
@@ -55,7 +52,7 @@ class ExaminerServiceImplTest {
 
     @Test
     void shouldThrowNotEnoughQuestionsExceptionWhenThereIsNotEnoughQuestions() {
-        //give
+
         int amount = 3;
         List<Question> questions = new ArrayList<>();
         for (int i = 0; i < amount / 2; i++) {
@@ -64,8 +61,6 @@ class ExaminerServiceImplTest {
 
         Mockito.when(questionService.getAll()).thenReturn(questions);
 
-        //when
-        //then
         assertThrows(
                 NotEnoughQuestionsException.class,
                 () ->

@@ -24,33 +24,26 @@ class JavaQuestionServiceTest {
 
     @Test
     void shouldCorrectlyAddQuestion() {
-        //given
         Question expectedQuestion = new Question("question", "answer");
 
-        //when
         Question actualQuestion = questionService.add(expectedQuestion);
 
-        //then
         assertEquals(expectedQuestion, actualQuestion);
 
     }
 
     @Test
     void remove() {
-        //given
         Question expectedQuestion = new Question("question", "answer");
         questionService.add(expectedQuestion);
 
-        //when
         Question actualQuestion = questionService.remove(expectedQuestion);
 
-        //then
         assertEquals(expectedQuestion, actualQuestion);
     }
 
     @Test
     void getAll() {
-        //given
         Question question1 = new Question("question", "answer");
         Question question2 = new Question("question", "answer");
 
@@ -62,16 +55,13 @@ class JavaQuestionServiceTest {
             add(question2);
         }};
 
-        //when
         Collection<Question> actualQuestion = questionService.getAll();
 
-        //then
         assertEquals(expectedQuestions, actualQuestion);
     }
 
     @Test
     void getRandomQuestion() {
-        //given
         Question question1 = new Question("question", "answer");
         Question question2 = new Question("question", "answer");
 
@@ -83,10 +73,8 @@ class JavaQuestionServiceTest {
             add(question2);
         }};
 
-        //when
         Question randomQuestion = questionService.getRandomQuestion();
 
-        //then
         assertTrue(questions.contains(randomQuestion));
     }
 }
