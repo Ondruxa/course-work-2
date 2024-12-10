@@ -29,7 +29,6 @@ class JavaQuestionServiceTest {
         Question actualQuestion = questionService.add(expectedQuestion);
 
         assertEquals(expectedQuestion, actualQuestion);
-
     }
 
     @Test
@@ -46,10 +45,8 @@ class JavaQuestionServiceTest {
     void getAll() {
         Question question1 = new Question("question", "answer");
         Question question2 = new Question("question", "answer");
-
         questionService.add(question1);
         questionService.add(question2);
-
         Set<Question> expectedQuestions = new HashSet<>() {{
             add(question1);
             add(question2);
@@ -64,10 +61,8 @@ class JavaQuestionServiceTest {
     void getRandomQuestion() {
         Question question1 = new Question("question", "answer");
         Question question2 = new Question("question", "answer");
-
         questionService.add(question1);
         questionService.add(question2);
-
         Set<Question> questions = new HashSet<>() {{
             add(question1);
             add(question2);

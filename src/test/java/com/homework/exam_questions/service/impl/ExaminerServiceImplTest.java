@@ -29,14 +29,11 @@ class ExaminerServiceImplTest {
     @Test
     void shouldCorrectlyGetRandomQuestions() {
         int amount = 3;
-
         List<Question> questions = new ArrayList<>();
         for (int i = 0; i < amount; i++) {
             questions.add(new Question("question" + i, "answer" + i));
         }
-
         Mockito.when(questionService.getAll()).thenReturn(questions);
-
         Mockito.when(questionService.getRandomQuestion()).thenReturn(
                 questions.get(0), questions.get(0),
                 questions.get(1), questions.get(1),
@@ -52,19 +49,17 @@ class ExaminerServiceImplTest {
 
     @Test
     void shouldThrowNotEnoughQuestionsExceptionWhenThereIsNotEnoughQuestions() {
-
         int amount = 3;
         List<Question> questions = new ArrayList<>();
         for (int i = 0; i < amount / 2; i++) {
             questions.add(new Question("question" + i, "answer" + i));
         }
-
         Mockito.when(questionService.getAll()).thenReturn(questions);
 
         assertThrows(
                 NotEnoughQuestionsException.class,
                 () ->
-                    examinerService.getQuestions(amount)
+                        examinerService.getQuestions(amount)
         );
     }
 }
